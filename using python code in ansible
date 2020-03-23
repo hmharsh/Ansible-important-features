@@ -1,0 +1,9 @@
+- set_fact:
+    IP: |
+      {% set ip_list = [] %}
+      {% for P in groups['webserver'] %}
+      {% set _ = ip_list.append(lookup('dig', p)) %}
+      {% endfor %}
+      {{ ip_list }}
+  delegate_to: localhost
+  run_once: yes

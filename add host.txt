@@ -1,0 +1,25 @@
+ # add host in windows       
+        add_host:
+          hostname: "{{temp_ip}}"
+          ansible_user: "{{}}"
+          ansible_password: "{{}}"  
+          ansible_port: 5985
+          ansible_connection: winrm
+          ansible_winrm_scheme: http
+          ansible_winnrm_transport: ntlm
+          ansible_winrm_server_cert_validation: ignore
+ 
+ 
+    vars:
+      # config variables below make sure no host public key added in known host, this will solve problem of already having public key corrosponding to same IP for some older host 
+      - ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+      - ansible_record_host_keys: False
+ 
+ 
+# inventory speedup 
+[ssh_connection]
+ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s
+https://developer.rackspace.com/blog/speeding-up-ssh-session-creation/
+ 
+
+ 

@@ -1,0 +1,12 @@
+# https://medium.com/@heenashree2010/create-a-custom-module-with-ansible-python-6285874a09b4#:~:text=Write%20your%20first%20python%20program&text=The%20testing.py%20module%20utility,%2C%20import%20from%20testing.py.&text=This%20will%20import%20all%20the,python%20file%20is%20only%20JSON.
+- hosts: localhost
+  vars_prompt:
+   - name: giveName
+     prompt: "Please provide your name"
+     private: no
+     failed_when: giveName is undefined
+  tasks:
+  - name: Python Execution
+    testing: yourName={{ giveName }}
+    register: result
+  - debug: var=result

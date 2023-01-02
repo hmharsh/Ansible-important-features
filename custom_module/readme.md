@@ -14,3 +14,6 @@ refer: https://medium.com/@heenashree2010/create-a-custom-module-with-ansible-py
 
 ##  1.yml: basic implementation 
 ## 2.yml: implementation where python code having import statements
+
+
+Good reference for custom python modules: https://github.com/veksh/ansible-esxi/tree/3e1671e173d9d889f0c7e85e45d2ec1a52260167/library
